@@ -1,0 +1,19 @@
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 12px;
+  border-radius: 4px;
+  width: 240px;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 8px;
+}
+

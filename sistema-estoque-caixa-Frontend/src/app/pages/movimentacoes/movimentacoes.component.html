@@ -1,0 +1,63 @@
+<h2>Movimentações de Estoque</h2>
+
+<div class="error" *ngIf="error">{{ error }}</div>
+
+<div class="form-wrapper">
+  <h3>Nova Movimentação</h3>
+
+  <form [formGroup]="form" (ngSubmit)="registrar()">
+    <div class="form-group">
+      <label>Produto</label>
+      <select formControlName="produtoId">
+        <option [ngValue]="null">Selecione...</option>
+        <option *ngFor="let p of produtos" [value]="p.id">
+          {{ p.codigo }} - {{ p.nome }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Tipo</label>
+      <select formControlName="tipo">
+        <option *ngFor="let t of tipos" [value]="t">{{ t }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Quantidade</label>
+      <input type="number" formControlName="quantidade" />
+    </div>
+
+    <div class="form-group">
+      <label>Motivo</label>
+      <input formControlName="motivo" />
+    </div>
+
+    <button type="submit">Registrar</button>
+  </form>
+</div>
+
+<h3>Histórico</h3>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Data/Hora</th>
+    <th>Produto</th>
+    <th>Tipo</th>
+    <th>Quantidade</th>
+    <th>Usuário</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let m of movimentacoes">
+    <td>{{ m.id }}</td>
+    <td>{{ m.dataHora | date:'short' }}</td>
+    <td>{{ m.produtoNome }}</td>
+    <td>{{ m.tipo }}</td>
+    <td>{{ m.quantidade }}</td>
+    <td>{{ m.usuarioNome }}</td>
+  </tr>
+  </tbody>
+</table>
